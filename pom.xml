@@ -115,52 +115,6 @@
                 </executions>
             </plugin>
 
-            <!-- JaCoCo Plugin for code coverage -->
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.8</version> <!-- Use the latest version -->
-                <executions>
-                    <execution>
-                        <id>prepare-agent</id> <!-- Unique ID -->
-                        <goals>
-                            <goal>prepare-agent</goal>  <!-- Prepare JaCoCo agent to collect coverage data -->
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>generate-report</id> <!-- Unique ID -->
-                        <goals>
-                            <goal>report</goal>  <!-- Generate the code coverage report -->
-                        </goals>
-                        <configuration>
-                            <dataFile>${project.build.directory}/jacoco.exec</dataFile>
-                            <outputDirectory>${project.build.directory}/jacoco-report</outputDirectory>
-                            <reportFormats>
-                                <reportFormat>html</reportFormat>  <!-- Generate HTML report -->
-                                <reportFormat>xml</reportFormat>   <!-- Generate XML report -->
-                                <reportFormat>csv</reportFormat>   <!-- Generate CSV report -->
-                            </reportFormats>
-                        </configuration>
-                    </execution>
-                    <!-- Optional: Integration test coverage -->
-                    <execution>
-                        <id>integration-test-report</id> <!-- Unique ID -->
-                        <phase>integration-test</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                        <configuration>
-                            <dataFile>${project.build.directory}/jacoco-it.exec</dataFile>
-                            <outputDirectory>${project.build.directory}/jacoco-it-report</outputDirectory>
-                            <reportFormats>
-                                <reportFormat>html</reportFormat>
-                                <reportFormat>xml</reportFormat>
-                            </reportFormats>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
             <!-- Maven Surefire Plugin to run tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
