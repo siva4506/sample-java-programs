@@ -115,7 +115,7 @@
                 </executions>
             </plugin>
 
-            <!-- Add JaCoCo Plugin for code coverage -->
+            <!-- JaCoCo Plugin for code coverage -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -130,6 +130,31 @@
                         <goals>
                             <goal>report</goal>  <!-- Generate the code coverage report -->
                         </goals>
+                        <configuration>
+                            <dataFile>${project.build.directory}/jacoco.exec</dataFile>
+                            <outputDirectory>${project.build.directory}/jacoco-report</outputDirectory>
+                            <reportFormats>
+                                <reportFormat>html</reportFormat>  <!-- Generate HTML report -->
+                                <reportFormat>xml</reportFormat>   <!-- Generate XML report -->
+                                <reportFormat>csv</reportFormat>   <!-- Generate CSV report -->
+                            </reportFormats>
+                        </configuration>
+                    </execution>
+                    <!-- Optional: Integration test coverage -->
+                    <execution>
+                        <id>integration-test</id>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                        <configuration>
+                            <dataFile>${project.build.directory}/jacoco-it.exec</dataFile>
+                            <outputDirectory>${project.build.directory}/jacoco-it-report</outputDirectory>
+                            <reportFormats>
+                                <reportFormat>html</reportFormat>
+                                <reportFormat>xml</reportFormat>
+                            </reportFormats>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
